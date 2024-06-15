@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# vim:fileencoding=utf-8:foldmethod=marker
+
+# |- Environment Variables for *Underground* -| #
+# |-------------------------------------------| #
+
+
+# |- XDG Data Directories ->
+# {{{
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_STATE_HOME="${HOME}/.local/state"
+export XDG_CACHE_HOME="${HOME}/.cache"
+# }}}
+
+# |- Environment Defaults / Options ->
+# {{{
+# export EDITOR='nvim'
+# export VISUAL='nvim'
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+export HISTCONTROL=ignoreboth:erasedups
+export HISTSIZE=1000
+export HISTFILESIZE=2000
+export HISTFILE="${XDG_STATE_HOME}/bash/history"
+# }}}
+
+# |- Program Directory Paths ->
+# {{{
+export CARGO_HOME="${XDG_DATA_HOME}/cargo"
+export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
+# }}}

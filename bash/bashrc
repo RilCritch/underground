@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# vim:fileencoding=utf-8:foldmethod=marker
+
+# |- RilCritch's BashRC for the *Underground* Mini PC -| #
+# |----------------------------------------------------| #
+
+
+# |- Directories ->
+BASH_PATH="${HOME}/Repos/underground/bash"
+
+# |- All shell sessions ->
+[[ -f "${BASH_PATH}/envvars" ]] && . "${BASH_PATH}/envvars"
+[[ -f "${BASH_PATH}/paths" ]] && . "${BASH_PATH}/paths"
+
+[[ $- != *i* ]] && return # Stop script when non-interactive
+
+# |- Interactive shell sessions ->
+# Shell behavior
+bind "set completion-ignore-case on"
+shopt -s autocd
+shopt -s cdspell
+shopt -s cmdhist
+shopt -s histappend
+shopt -s expand_aliases
+shopt -s dotglob
+# shopt -s progcomp_alias
+# shopt -s xpg_echo
+
+# Prompt
+if [[ -n $(command -v starship) ]]; then
+	eval "$(starship init bash)"
+else
+	PS1='\@ \w  '
+fi
+
+# Temp
+alias ls='eza'

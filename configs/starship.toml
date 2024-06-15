@@ -1,0 +1,75 @@
+# vim:fileencoding=utf-8:foldmethod=marker
+
+## Custom format - basic
+# format = """
+# ${custom.git_dir}\
+# $directory
+# $python$c$java$lua$rust\
+# $character"""
+
+format = """
+$directory
+$character"""
+
+add_newline = false
+
+# Custom Modules
+## Git
+[custom.git_dir]
+# disabled = true
+description = "Displays name of the top level directory if inside of a git repository"
+command = "reponame.sh"
+when = "git rev-parse --is-inside-work-tree > /dev/null"
+shell = ["bash", "--noprofile", "--norc"]
+format = '[](blue)[\[](black)[$output](blue)[\]](black) '
+
+
+# Starship Modules
+[directory]
+style = 'cyan'
+read_only = ' '
+read_only_style = 'bright-red'
+truncation_length = 4
+truncate_to_repo = false
+fish_style_pwd_dir_length = 1
+format = '[$read_only]($read_only_style)[$path]($style) '
+
+[character]
+success_symbol = '[](bold green)'
+error_symbol = '[](bold red)'
+
+## languages
+[python]
+symbol = '[](bright-white)'
+style = 'bright-white'
+format = '[${symbol} ${pyenv_prefix}(\($virtualenv\))]($style) '
+detect_files = ['.python-version', 
+                  'Pipfile', 
+                  '__init__.py', 
+                  'pyproject.toml', 
+                  'requirements.txt', 
+                  'setup.py', 
+                  'tox.ini',
+                  'pyvenv.cfg'
+]
+
+[lua]
+symbol = '[󰢱](bright-white)'
+style = 'bright-white'
+# format = '[via ](bright-white)[${symbol}${version}]($style) '
+format = '(bright-white)[${symbol}] ($style) '
+
+[c]
+symbol = '[](bright-white)'
+style = 'bright-white'
+format = '(bright-white)[${symbol}] ($style) '
+
+[java]
+symbol = '[](bright-white)'
+style = 'bright-white'
+format = '(bright-white)[${symbol}] ($style) '
+
+[rust]
+symbol = '[󱘗](bright-white)'
+style = 'bright-white'
+format = '(bright-white)[${symbol}] ($style) '
