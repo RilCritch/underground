@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 # vim:fileencoding=utf-8:foldmethod=marker
 
-# |- RilCritch's BashRC for the *Underground* Mini PC -| #
-# |----------------------------------------------------| #
-
+# |--- RilCritch's BashRC for the *Underground* Mini PC ---| #
+# |--------------------------------------------------------| #
+# NOTE: by default openSUSE sources this file in profile so
+#       all settings here also take effect in a login shell
+#
+#	default aliases: /usr/etc/profile.d/alias.bash
 
 # |- Directories ->
 BASH_PATH="${HOME}/Repos/underground/bash"
@@ -33,5 +36,7 @@ else
 	PS1='\@ \w  '
 fi
 
-# Temp
-alias ls='eza'
+# |- Startup commands ->
+# Go to 'Base' directory ~ alternative $HOME Directory
+cd "${HOME}"/Base
+. "/home/rc/.local/share/cargo/env"
